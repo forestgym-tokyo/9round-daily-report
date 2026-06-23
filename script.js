@@ -13,14 +13,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   addRequest();
 });
 
-async function loadMaster() {
+function loadMaster() {
+  return new Promise((resolve, reject) => {
+    const callbackName = "masterCallback_" + Date.now();
 
-  const res = await fetch(`${GAS_URL}?action=master`);
-  masterData = await res.json();
+    window[callbackName] = function(data) {
+      masterData = data;
 
-  loadStaff();
-  loadLessonSlots();
-  loadCleaning();
+      loadStaff();
+      loadLessonSlots();
+      loadCleaning();
+
+      delete window[callbackName];
+      script.remove();
+
+      resolve();
+    };
+
+    const script = document.createElement("script");
+    script.src = `${GAS_URL}?action=master&callback=${callbackName}`;
+    script.onerror = reject;
+
+    document.body.appendChild(script);
+  });
 }
 
 function loadStaff() {
