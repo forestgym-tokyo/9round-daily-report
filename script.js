@@ -271,32 +271,18 @@ async function submitReport() {
         document.getElementById("mallProDone").checked
     };
 
-    const res = await fetch(GAS_URL, {
+   await fetch(GAS_URL, {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "text/plain"
+  },
+  body: JSON.stringify(data)
+});
 
-      method: "POST",
+alert("送信しました。");
 
-      headers: {
-        "Content-Type": "application/json"
-      },
-
-      body: JSON.stringify(data)
-    });
-
-    const result = await res.json();
-
-    if (result.success) {
-
-      alert(
-        `送信完了\n\n日報ID:${result.reportId}`
-      );
-
-      location.reload();
-
-    } else {
-
-      alert(result.error || "送信失敗");
-    }
-
+location.reload();
   } catch (e) {
 
     alert(e.message);
