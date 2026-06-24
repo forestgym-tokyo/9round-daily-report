@@ -28,170 +28,69 @@
 </div>
 
 <div class="card">
-
-  <h2>担当レッスン枠</h2>
-
+  <h2>担当レッスン枠・対応人数</h2>
   <div id="lessonSlots"></div>
 
-  <label style="margin-top:20px;">
-    会員対応数（自動計算）
-  </label>
-
-  <input
-    type="number"
-    id="memberCount"
-    readonly
-  >
-
+  <label>会員対応数（自動計算）</label>
+  <input type="number" id="memberCount" readonly>
 </div>
 
 <div class="card">
-
   <h2>清掃状況</h2>
-
   <div id="cleaningArea"></div>
-
 </div>
 
 <div class="card">
-
   <h2>要望・クレーム</h2>
-
   <div id="requestContainer"></div>
 
-  <button
-    type="button"
-    onclick="addRequest()"
-  >
+  <button type="button" onclick="addRequest()">
     ＋要望・クレーム追加
   </button>
-
 </div>
 
 <div class="card">
-
   <h2>忘れ物</h2>
-
   <div id="lostItemContainer"></div>
 
-  <button
-    type="button"
-    onclick="addLostItem()"
-  >
+  <button type="button" onclick="addLostItem()">
     ＋忘れ物追加
   </button>
-
 </div>
 
 <div class="card">
-
   <h2>設備異常</h2>
+  <div id="equipmentContainer"></div>
 
-  <label>
-    <input
-      type="radio"
-      name="equipmentIssue"
-      value="なし"
-      checked
-    >
-    なし
-  </label>
-
-  <label>
-    <input
-      type="radio"
-      name="equipmentIssue"
-      value="あり"
-    >
-    あり
-  </label>
-
-  <textarea
-    id="equipmentDetail"
-    placeholder="設備異常内容"
-  ></textarea>
-
-  <select id="equipmentUrgency">
-    <option value="">緊急度選択</option>
-    <option value="低">低</option>
-    <option value="中">中</option>
-    <option value="高">高</option>
-  </select>
-
-  <input
-    type="file"
-    id="equipmentPhoto"
-    accept="image/*"
-  >
-
+  <button type="button" onclick="addEquipmentIssue()">
+    ＋設備異常追加
+  </button>
 </div>
 
 <div class="card">
-
   <h2>備品破損・不足</h2>
+  <div id="supplyContainer"></div>
 
-  <label>
-    <input
-      type="radio"
-      name="supplyIssue"
-      value="なし"
-      checked
-    >
-    なし
-  </label>
-
-  <label>
-    <input
-      type="radio"
-      name="supplyIssue"
-      value="あり"
-    >
-    あり
-  </label>
-
-  <textarea
-    id="supplyDetail"
-    placeholder="内容"
-  ></textarea>
-
+  <button type="button" onclick="addSupplyIssue()">
+    ＋備品破損・不足追加
+  </button>
 </div>
 
 <div class="card">
-
   <h2>引継ぎ事項</h2>
-
-  <textarea
-    id="handover"
-    placeholder="引継ぎ事項"
-  ></textarea>
-
+  <textarea id="handover" placeholder="引継ぎ事項"></textarea>
 </div>
 
 <div class="card">
-
   <h2>コメント</h2>
-
-  <textarea
-    id="comment"
-    placeholder="コメント"
-  ></textarea>
-
+  <textarea id="comment" placeholder="コメント"></textarea>
 </div>
 
-<div
-  class="card"
-  id="mallProSection"
-  style="display:none;"
->
-
+<div class="card" id="mallProSection" style="display:none;">
   <label>
-    <input
-      type="checkbox"
-      id="mallProDone"
-    >
+    <input type="checkbox" id="mallProDone">
     モールプロの退勤報告を完了しました
   </label>
-
 </div>
 
 <button
