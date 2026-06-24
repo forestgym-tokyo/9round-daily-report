@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>9ROUND 日報</title>
+
+<title>9ROUND 業務日報</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,127 +13,194 @@
 
 <div class="container">
 
-  <h1>9ROUND アリオ蘇我店 日報</h1>
+<h1>9ROUND アリオ蘇我店 日報</h1>
 
-  <div class="card">
-    <label>営業日</label>
-    <input type="date" id="workDate">
-  </div>
+<div class="card">
+  <label>営業日</label>
+  <input type="date" id="workDate">
+</div>
 
-  <div class="card">
-    <label>担当者</label>
-    <select id="staff">
-      <option value="">読み込み中...</option>
-    </select>
-  </div>
+<div class="card">
+  <label>担当者</label>
+  <select id="staff">
+    <option>読み込み中...</option>
+  </select>
+</div>
 
-  <div class="card">
-    <label>担当レッスン枠</label>
+<div class="card">
 
-    <div id="lessonSlots"></div>
-  </div>
+  <h2>担当レッスン枠</h2>
 
-  <div class="card">
-    <label>会員対応数</label>
-    <input type="number" id="memberCount" min="0">
-  </div>
+  <div id="lessonSlots"></div>
 
-  <div class="card">
-    <h2>清掃状況</h2>
+  <label style="margin-top:20px;">
+    会員対応数（自動計算）
+  </label>
 
-    <div id="cleaningArea"></div>
-  </div>
-
-  <div class="card">
-    <h2>要望・クレーム</h2>
-
-    <div id="requestContainer"></div>
-
-    <button type="button" onclick="addRequest()">
-      ＋追加
-    </button>
-  </div>
-
-  <div class="card">
-    <h2>設備異常</h2>
-
-    <label>
-      <input type="radio" name="equipmentIssue" value="なし" checked>
-      なし
-    </label>
-
-    <label>
-      <input type="radio" name="equipmentIssue" value="あり">
-      あり
-    </label>
-
-    <textarea
-      id="equipmentDetail"
-      placeholder="内容"
-    ></textarea>
-
-    <select id="equipmentUrgency">
-      <option value="">緊急度選択</option>
-      <option value="低">低</option>
-      <option value="中">中</option>
-      <option value="高">高</option>
-    </select>
-
-    <input type="file" id="equipmentPhoto" accept="image/*">
-  </div>
-
-  <div class="card">
-    <h2>備品破損・不足</h2>
-
-    <label>
-      <input type="radio" name="supplyIssue" value="なし" checked>
-      なし
-    </label>
-
-    <label>
-      <input type="radio" name="supplyIssue" value="あり">
-      あり
-    </label>
-
-    <textarea
-      id="supplyDetail"
-      placeholder="内容"
-    ></textarea>
-  </div>
-
-  <div class="card">
-    <h2>引継ぎ事項</h2>
-
-    <textarea id="handover"></textarea>
-  </div>
-
-  <div class="card">
-    <h2>コメント</h2>
-
-    <textarea id="comment"></textarea>
-  </div>
-
-  <div
-    class="card"
-    id="mallProSection"
-    style="display:none;"
+  <input
+    type="number"
+    id="memberCount"
+    readonly
   >
-    <label>
-      <input
-        type="checkbox"
-        id="mallProDone"
-      >
-      モールプロの退勤報告を完了しました
-    </label>
-  </div>
+
+</div>
+
+<div class="card">
+
+  <h2>清掃状況</h2>
+
+  <div id="cleaningArea"></div>
+
+</div>
+
+<div class="card">
+
+  <h2>要望・クレーム</h2>
+
+  <div id="requestContainer"></div>
 
   <button
-    id="submitBtn"
-    class="submit-btn"
-    onclick="submitReport()"
+    type="button"
+    onclick="addRequest()"
   >
-    日報を送信する
+    ＋要望・クレーム追加
   </button>
+
+</div>
+
+<div class="card">
+
+  <h2>忘れ物</h2>
+
+  <div id="lostItemContainer"></div>
+
+  <button
+    type="button"
+    onclick="addLostItem()"
+  >
+    ＋忘れ物追加
+  </button>
+
+</div>
+
+<div class="card">
+
+  <h2>設備異常</h2>
+
+  <label>
+    <input
+      type="radio"
+      name="equipmentIssue"
+      value="なし"
+      checked
+    >
+    なし
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="equipmentIssue"
+      value="あり"
+    >
+    あり
+  </label>
+
+  <textarea
+    id="equipmentDetail"
+    placeholder="設備異常内容"
+  ></textarea>
+
+  <select id="equipmentUrgency">
+    <option value="">緊急度選択</option>
+    <option value="低">低</option>
+    <option value="中">中</option>
+    <option value="高">高</option>
+  </select>
+
+  <input
+    type="file"
+    id="equipmentPhoto"
+    accept="image/*"
+  >
+
+</div>
+
+<div class="card">
+
+  <h2>備品破損・不足</h2>
+
+  <label>
+    <input
+      type="radio"
+      name="supplyIssue"
+      value="なし"
+      checked
+    >
+    なし
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="supplyIssue"
+      value="あり"
+    >
+    あり
+  </label>
+
+  <textarea
+    id="supplyDetail"
+    placeholder="内容"
+  ></textarea>
+
+</div>
+
+<div class="card">
+
+  <h2>引継ぎ事項</h2>
+
+  <textarea
+    id="handover"
+    placeholder="引継ぎ事項"
+  ></textarea>
+
+</div>
+
+<div class="card">
+
+  <h2>コメント</h2>
+
+  <textarea
+    id="comment"
+    placeholder="コメント"
+  ></textarea>
+
+</div>
+
+<div
+  class="card"
+  id="mallProSection"
+  style="display:none;"
+>
+
+  <label>
+    <input
+      type="checkbox"
+      id="mallProDone"
+    >
+    モールプロの退勤報告を完了しました
+  </label>
+
+</div>
+
+<button
+  id="submitBtn"
+  class="submit-btn"
+  onclick="submitReport()"
+>
+  日報を送信する
+</button>
 
 </div>
 
