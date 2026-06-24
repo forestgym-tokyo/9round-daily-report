@@ -57,24 +57,31 @@ function loadStaff() {
 }
 
 function loadLessonSlots() {
-
-  const container =
-    document.getElementById("lessonSlots");
-
+  const container = document.getElementById("lessonSlots");
   container.innerHTML = "";
 
   masterData.lessonSlots.forEach(slot => {
-
     container.innerHTML += `
-      <label>
+      <div class="slot-row">
+        <label>
+          <input
+            type="checkbox"
+            name="lessonSlot"
+            value="${slot}"
+            onchange="toggleMallPro(); updateMemberTotal();"
+          >
+          ${slot}
+        </label>
+
         <input
-          type="checkbox"
-          name="lessonSlot"
-          value="${slot}"
-          onchange="toggleMallPro()"
+          type="number"
+          class="slot-count"
+          data-slot="${slot}"
+          min="0"
+          placeholder="人数"
+          oninput="updateMemberTotal()"
         >
-        ${slot}
-      </label><br>
+      </div>
     `;
   });
 }
