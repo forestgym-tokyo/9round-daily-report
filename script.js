@@ -305,6 +305,16 @@ async function submitReport() {
       ...document.querySelectorAll('input[name="lessonSlot"]:checked')
     ].map(x => x.value);
 
+    if (
+      lessonSlots.includes("20:00～20:45") &&
+      !document.getElementById("mallProDone").checked
+    ) {
+      alert("モールプロの退勤報告完了にチェックしてください。");
+      btn.disabled = false;
+      btn.textContent = "日報を送信する";
+      return;
+    }
+
     const lessonCounts = {};
 
     document.querySelectorAll(".slot-count").forEach(input => {
