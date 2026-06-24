@@ -183,9 +183,12 @@ function addLostItem() {
       style="display:none;"
     >
 
-    <textarea class="lostContent" placeholder="忘れ物の内容"></textarea>
+    <textarea class="lostContent" placeholder="忘れ物"></textarea>
 
-    <input type="text" class="lostStorage" placeholder="保管場所">
+    <select class="lostStatus">
+      <option value="未届出">未届出</option>
+      <option value="届出済">届出済</option>
+    </select>
 
     <input type="file" class="lostPhoto" accept="image/*">
 
