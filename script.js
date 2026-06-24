@@ -341,14 +341,14 @@ async function submitReport() {
 
       const file = item.querySelector(".lostPhoto").files[0];
 
-      lostItems.push({
-        ownerType: item.querySelector(".lostOwnerType").value,
-        ownerName: item.querySelector(".lostOwnerName").value,
-        content: content,
-        storage: item.querySelector(".lostStorage").value,
-        photo: await fileToBase64(file),
-        note: item.querySelector(".lostNote").value
-      });
+     lostItems.push({
+  ownerType: item.querySelector(".lostOwnerType").value,
+  ownerName: item.querySelector(".lostOwnerName").value,
+  content: content,
+  status: item.querySelector(".lostStatus").value,
+  photo: await fileToBase64(file),
+  note: item.querySelector(".lostNote").value
+});
     }
 
     const equipmentIssues = [];
