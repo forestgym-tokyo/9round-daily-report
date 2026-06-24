@@ -86,6 +86,15 @@ function loadLessonSlots() {
   });
 }
 
+function updateMemberTotal() {
+  let total = 0;
+
+  document.querySelectorAll(".slot-count").forEach(input => {
+    total += Number(input.value || 0);
+  });
+
+  document.getElementById("memberCount").value = total;
+}
 function loadCleaning() {
 
   const container =
